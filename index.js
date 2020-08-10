@@ -4,7 +4,7 @@ import Hello from './Hello';
 import './style.css';
 import {DropdownComponent} from './common/DropdownComponent';
 import {InputComponent} from './common/InputComponent'
-import {RadioButtonComponent} from './common/RadioButtonComponent'
+import {RadioButtonsComponent} from './common/RadioButtonsComponent'
 
 class App extends Component {
   constructor() {
@@ -17,6 +17,23 @@ class App extends Component {
 
   render() {
     const options = [{value: 'option1', text: 'option1'},{value: 'two', text: 'two'}]
+    const radioOptions = [
+      {
+        id: 'apple',
+        value: 'apple',
+        label: 'Apple'
+      },
+      {
+        id: 'orange',
+        value: 'orange',
+        label: 'Orange'
+      },
+      {
+        id: 'banana',
+        value: 'banana',
+        label: 'Banana'
+      }
+    ]
     return (
       <div>
         <Hello name={this.state.name} />
@@ -25,7 +42,7 @@ class App extends Component {
         </p>
         <DropdownComponent defaultOption={'Biding zone'} options={options} disabled={false}/>
         <InputComponent placeholder={'text'}/>
-        <RadioButtonComponent />
+        <RadioButtonsComponent groupName="fruits" options={radioOptions} />
       </div>
     );
   }

@@ -47,16 +47,14 @@ const RadioButtonsContainer = styled.div`
     border: 1px solid #CCCCCC;
   }
 `
-export function RadioButtonComponent ({
+export function RadioButtonsComponent ({
   type = 'radio',
-  placeholder = '', 
+  groupName = 'radio-group', 
   options = [], 
   onChange = () => {},
   onBlur = () => {},
   onFocus = () => {},
   onClick = () => {},
-  disabled = false,
-  width = '100%'
   }) {
   return (
     <Fragment>
@@ -65,27 +63,19 @@ export function RadioButtonComponent ({
         return (
           <Fragment>
             <input
+              id={option.id}
+              name={groupName}
+              value={option.value}
               type={type} 
-              placeholder={placeholder} 
               onChange={onChange}
               onblur={onBlur}
               onfocus={onFocus}
               onclick={onClick}
-              disabled={disabled}/>
-            <Label for="">Apple</Label>
+              disabled={option.disabled}/>
+            <Label for={option.id}>{option.label}</Label>
           </Fragment>
           )
       })}
-      <input type="radio" id="radioApple" name="radioFruit" value="apple" />
-      <Label for="radioApple">Apple</Label>
-
-      <input type="radio" id="radioBanana" name="radioFruit" value="banana" />
-      <Label for="radioBanana">Banana</Label>
-      <input type="radio" id="radioBan" name="radioFruit" value="banana" />
-      <Label for="radioBan">Banana</Label>
-
-      <input type="radio" id="radioOrange" name="radioFruit" value="orange" disabled />
-      <Label for="radioOrange">Orange</Label> 
     </RadioButtonsContainer>
     </Fragment>
   )
