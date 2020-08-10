@@ -25,6 +25,14 @@ const Option = styled.option`
   background-color: ${backgroundColor}
 `
 
+const renderGroup = (group) => {
+  return <optgroup label={group.name}>
+    {group.options.map(
+      option => (<option value={option.value}>{option.text}</option>)
+    )}
+  </optgroup>
+}
+
 export function DropdownComponent ({
   defaultOption = 'Select', 
   options = [], 
@@ -44,7 +52,9 @@ export function DropdownComponent ({
     disabled={disabled} >
     <Option>{defaultOption}</Option>
     {options.map(option=> {
-      return <Option value={option.value}>{option.text}</Option>
+      return option.isGrouped 
+      ? renderGroup(option)
+      : <Option value={option.value}>{option.text}</Option>
     })}
   </Dropdown>
   </Fragment>

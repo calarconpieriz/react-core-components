@@ -17,6 +17,18 @@ class App extends Component {
 
   render() {
     const options = [{value: 'option1', text: 'option1'},{value: 'two', text: 'two'}]
+    const groupedOptions = [
+      {
+        isGrouped: true,
+        name: 'Matches',
+        options: [
+          {value: 'option1', text: 'option1'},
+          {value: 'two', text: 'two'}
+        ]
+      },
+      {value: 'option1', text: 'option1'},
+      {value: 'two', text: 'two'}
+    ]
     const radioOptions = [
       {
         id: 'apple',
@@ -40,7 +52,9 @@ class App extends Component {
         <p>
           Components playbook
         </p>
+        <DropdownComponent defaultOption={'Dropdown'} options={groupedOptions} disabled={false}/>
         <DropdownComponent defaultOption={'Biding zone'} options={options} disabled={false}/>
+
         <InputComponent placeholder={'text'}/>
         <RadioButtonsComponent groupName="fruits" options={radioOptions} />
       </div>
