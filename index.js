@@ -4,6 +4,7 @@ import Hello from './Hello';
 import './style.css';
 import {DropdownComponent} from './common/DropdownComponent';
 import {InputComponent} from './common/InputComponent'
+import {RadioButtonComponent} from './common/RadioButtonComponent'
 
 class App extends Component {
   constructor() {
@@ -24,6 +25,7 @@ class App extends Component {
         </p>
         <DropdownComponent defaultOption={'Biding zone'} options={options} disabled={false}/>
         <InputComponent placeholder={'text'}/>
+        <RadioButtonComponent />
       </div>
     );
   }

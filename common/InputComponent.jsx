@@ -27,7 +27,6 @@ const Input = styled.input`
 export function InputComponent ({
   type = 'text',
   placeholder = '', 
-  options = [], 
   onChange = () => {},
   onBlur = () => {},
   onFocus = () => {},
