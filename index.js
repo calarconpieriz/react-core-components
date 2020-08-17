@@ -60,17 +60,20 @@ class App extends Component {
       {
         id: 'apple',
         value: 'apple',
-        label: 'Apple'
+        label: 'Apple',
+        icon: ''
       },
       {
         id: 'orange',
         value: 'orange',
-        label: 'Orange'
+        label: 'Orange',
+        icon: ''
       },
       {
         id: 'banana',
         value: 'banana',
-        label: 'Banana'
+        label: 'Banana',
+        icon: ''
       }
     ]
     return (
@@ -83,7 +86,8 @@ class App extends Component {
         <DropdownComponent defaultOption={'Biding zone'} options={options} disabled={false}/>
 
         <InputComponent placeholder={'text'}/>
-        <InputComponent placeholder={'number'} suffix={'"GWh"'}/>
+        <InputComponent type={'number'} placeholder={'number GWh'} suffix={'"GWh"'}/>
+        <RadioButtonsComponent groupName="fruits" options={radioOptions} />
         <RadioButtonsComponent groupName="fruits" options={radioOptions} />
         <SelectComponent options={optionsSelect} />
       </div>

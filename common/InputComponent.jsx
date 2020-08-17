@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import styled from 'styled-components'
 import formEvents from './formEvents'
 import {commonStyles} from './commonStyles'
@@ -10,18 +10,20 @@ const InputWrapper = styled.div`
   display: inline-block;
   width: 100%;
   &:after {
+    color: ${props => props.value().length === 0 ? 'transparent' : color};
     position: absolute;
     display: inline-block;
     top: .5em;
-    right: .5em;
-    content: ${props => props.suffix};
+    left: 16px;
+    content: ${props => props.getMask}${props => props.suffix};
   }
 `
 
 const Input = styled.input`
+  caret-color: black;
   width: ${props => props.width};
   font-size: ${fontSize};
-  color: ${color};
+  color: transparent;
   border: 1px solid ${borderColor};
   background: ${backgroundColor};
   padding: 7px 0px 7px 16px;
@@ -48,16 +50,30 @@ export function InputComponent ({
   width = '100%',
   suffix = '',
   }) {
+    const [inputValue, setInputValue] = useState('')
+    
+    const getMask = () => {
+      return `"${inputValue} "`
+    }
+
+    const getValue = () => {
+      return inputValue
+    }
+
+    const onValueChange = (value) => {
+      setInputValue(value)
+    }
   return (
     <Fragment>
-    <InputWrapper suffix={suffix}>
-        <Input type={type} placeholder={placeholder} onChange={onChange}
+    <InputWrapper suffix={suffix} getMask={getMask} value={getValue}>
+        <Input type={type} placeholder={placeholder} onChange={event => onValueChange(event.target.value)}
     onblur={onBlur}
     onfocus={onFocus}
     onclick={onClick}
     disabled={disabled}
-    width={width}/>
+    width={width} value={inputValue}/>
     </InputWrapper>
+    
     
     </Fragment>
   )
